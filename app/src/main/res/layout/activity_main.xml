@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:alpha="0.15"
+        android:src="@drawable/back"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aboutapp"
+        android:layout_marginHorizontal="30sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
+
+    <TextView
+        android:id="@+id/descriptiontext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginTop="20sp"
+        android:text="@string/decriptionText" />
+    <TextView
+        android:id="@+id/descriptiontext1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptiontext"
+        android:layout_marginTop="20sp"
+        android:text="@string/decriptionText1" />
+    <TextView
+        android:id="@+id/descriptionRoof"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptiontext1"
+        android:layout_marginTop="20sp"
+        android:text="@string/decriptionRoof" />
+    <TextView
+        android:id="@+id/descriptionStrapila"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionRoof"
+        android:layout_marginTop="20sp"
+        android:text="@string/decriptionStrapila" />
+
+    <TextView
+        android:id="@+id/descriptionMaterial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionStrapila"
+        android:layout_marginTop="20dp"
+        android:text="@string/decriptionMaterial" />
+
+    <LinearLayout
+        android:id="@+id/choose_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/descriptionMaterial"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonGoToRoofCalculator"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="Перейти к калькулятору крыши" />
+
+        <Button
+            android:id="@+id/buttonGoToRoofGuide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="Перейти к справочнику" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/choose_activity"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonGoToMyProjects"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="Мои проекты" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

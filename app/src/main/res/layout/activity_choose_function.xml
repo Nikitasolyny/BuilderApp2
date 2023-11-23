@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:rowCount="2"
+    android:alignmentMode="alignMargins"
+    android:columnOrderPreserved="false"
+    android:rowOrderPreserved="false">
+
+    <!-- Первая кнопка-изображение -->
+    <!-- Установите вес (в данном случае, 1) -->
+
+    <!-- Вторая кнопка-изображение -->
+
+    <ImageButton
+        android:id="@+id/scat1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:onClick="onImageButtonClick"
+        android:background="@android:color/transparent"
+        android:src="@drawable/scat1" />
+
+    <ImageButton
+        android:id="@+id/valma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/valma"
+        android:onClick="onImageButtonClick"
+        android:background="@android:color/transparent"
+        android:layout_columnWeight="1"/>
+
+    <ImageButton
+        android:id="@+id/scat2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/scat2"
+        android:onClick="onImageButtonClick"
+        android:background="@android:color/transparent"
+        android:layout_columnWeight="1"/>
+
+    <ImageButton
+        android:id="@+id/mansard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mansard"
+        android:onClick="onImageButtonClick"
+        android:background="@android:color/transparent"
+        android:layout_columnWeight="1"/>
+
+</GridLayout>
+
