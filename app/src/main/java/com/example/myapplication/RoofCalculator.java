@@ -40,8 +40,6 @@ public class RoofCalculator extends AppCompatActivity {
             public void onClick(View v) {
                 calculateRoofArea();
                 Intent intent = new Intent(RoofCalculator.this, MyProjects.class);
-
-                // Запускаем новую активити
                 startActivity(intent);
             }
         });
@@ -50,28 +48,24 @@ public class RoofCalculator extends AppCompatActivity {
         Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
     }
     private void calculateRoofArea() {
-        // Получаем значения длины и ширины крыши
         String lengthStr = lengthEditText.getText().toString();
         String widthStr = widthEditText.getText().toString();
         String sves1Str = sves1.getText().toString();
         String heightStr = heightEditText.getText().toString();
         String nameStr = nameEditText.getText().toString();
 
-        // Проверяем, не пусты ли введенные значения
         if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves1Str.isEmpty()  || heightStr.isEmpty()) {
             resultTextView.setText("Введите все значения");
             return;
         }
 
-        // Преобразуем строки в числа
         double length = Double.parseDouble(lengthStr);
         double width = Double.parseDouble(widthStr);
         double height = Double.parseDouble(heightStr);
         double d = Double.parseDouble(sves1Str);
         double area = (Math.sqrt(Math.pow(height, 2) + Math.pow(length, 2)) + 2 *d) * (width + 2 * d);
 
-        // Добавление данных в базу данных
-        long newRowId = databaseHelper.insertData(nameStr,width,length);
+        long newRowId = databaseHelper.insertData(nameStr,"Односкатная",length, width, height, area, d, 0, 0);
         if (newRowId != -1) {
             showToast("Data added, Row ID: " + newRowId);
         } else {

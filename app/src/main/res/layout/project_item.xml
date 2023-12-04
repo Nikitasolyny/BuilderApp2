@@ -29,4 +29,34 @@
         android:layout_height="wrap_content"
         android:text="Square: " />
 
+    <TextView
+        android:id="@+id/typeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Рассчитываемый тип крыши: " />
+
+    <TextView
+        android:id="@+id/heightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height: " />
+
+    <TextView
+        android:id="@+id/dTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D: " />
+
+    <TextView
+        android:id="@+id/cTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C: " />
+
+    <TextView
+        android:id="@+id/sTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S: " />
+
 </LinearLayout>

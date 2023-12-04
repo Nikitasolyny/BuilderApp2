@@ -3,30 +3,60 @@ package com.example.myapplication;
 public class Project {
 
     private String name;
-    private double width;
+    private String type;
     private double length;
+    private double width;
+    private double height;
     private double square;
+    private double d;
+    private double c;
+    private double s;
 
-    public Project(String name, double width, double length, double square) {
+    public Project(String name, String type, double length, double width, double height, double square, double d, double c, double s) {
         this.name = name;
-        this.width = width;
+        this.type = type;
         this.length = length;
+        this.width = width;
+        this.height = height;
         this.square = square;
+        this.d = d;
+        this.c = c;
+        this.s = s;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getWidth() {
-        return width;
+    public String getType() {
+        return type;
     }
 
     public double getLength() {
         return length;
     }
 
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
     public double getSquare() {
         return square;
+    }
+
+    public double getD() {
+        return d;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public double getS() {
+        return s;
     }
 }

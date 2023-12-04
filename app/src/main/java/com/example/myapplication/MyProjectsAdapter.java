@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,23 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
         holder.widthTextView.setText("Width: " + project.getWidth());
         holder.lengthTextView.setText("Length: " + project.getLength());
         holder.squareTextView.setText("Square: " + project.getSquare());
-    }
 
+        holder.typeTextView.setText("Type: " + project.getType());
+        holder.heightTextView.setText("Height: " + project.getHeight());
+        holder.dTextView.setText("D: " + project.getD());
+        holder.cTextView.setText("C: " + project.getC());
+        holder.sTextView.setText("S: " + project.getS());
+        Log.d("MyProjectsAdapter", "Binding project at position " + position);
+    }
     @Override
     public int getItemCount() {
+        if (projects == null) {
+            return 0;
+        }
         return projects.size();
+    }
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +57,11 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
         TextView widthTextView;
         TextView lengthTextView;
         TextView squareTextView;
+        TextView typeTextView;
+        TextView heightTextView;
+        TextView dTextView;
+        TextView cTextView;
+        TextView sTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,6 +69,11 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
             widthTextView = itemView.findViewById(R.id.widthTextView);
             lengthTextView = itemView.findViewById(R.id.lengthTextView);
             squareTextView = itemView.findViewById(R.id.squareTextView);
+            typeTextView = itemView.findViewById(R.id.typeTextView);
+            heightTextView = itemView.findViewById(R.id.heightTextView);
+            dTextView = itemView.findViewById(R.id.dTextView);
+            cTextView = itemView.findViewById(R.id.cTextView);
+            sTextView = itemView.findViewById(R.id.sTextView);
         }
     }
 }

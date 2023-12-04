@@ -44,8 +44,6 @@ public class RoofCalculator4 extends AppCompatActivity {
             public void onClick(View v) {
                 calculateRoofArea();
                 Intent intent = new Intent(RoofCalculator4.this, MyProjects.class);
-
-                // Запускаем новую активити
                 startActivity(intent);
             }
         });
@@ -54,7 +52,6 @@ public class RoofCalculator4 extends AppCompatActivity {
         Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
     }
     private void calculateRoofArea() {
-        // Получаем значения длины и ширины крыши
         String lengthStr = lengthEditText4.getText().toString();
         String widthStr = widthEditText4.getText().toString();
         String sves4Str = sves4.getText().toString();
@@ -63,13 +60,10 @@ public class RoofCalculator4 extends AppCompatActivity {
         String heightStr = heightEditText4.getText().toString();
         String nameStr = nameEditText4.getText().toString();
 
-        // Проверяем, не пусты ли введенные значения
         if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves4Str.isEmpty()  || DEditTextStr.isEmpty() || CEditText2Str.isEmpty() || heightStr.isEmpty()) {
             resultTextView4.setText("Введите все значения");
             return;
         }
-
-        // Преобразуем строки в числа
         double a = Double.parseDouble(lengthStr);
         double b = Double.parseDouble(widthStr);
         double h = Double.parseDouble(heightStr);
@@ -78,8 +72,9 @@ public class RoofCalculator4 extends AppCompatActivity {
         double d = Double.parseDouble(DEditTextStr);
         double area = 2*((a+2*s)*(Math.sqrt(Math.pow(h,2)+Math.pow(c,2)) + (a+2*s) * Math.sqrt(Math.pow((b+2*s)/2-c,2)+Math.pow(d,2))));
 
-        // Добавление данных в базу данных
-        long newRowId = databaseHelper.insertData(nameStr,b,a);
+        // такой порядок String name, String type, double length, double width, double height,
+        //                           double square, double d, double c, double s
+        long newRowId = databaseHelper.insertData(nameStr,"Мансардная",a,b,h,area,s,c,d);
         if (newRowId != -1) {
             showToast("Data added, Row ID: " + newRowId);
         } else {
