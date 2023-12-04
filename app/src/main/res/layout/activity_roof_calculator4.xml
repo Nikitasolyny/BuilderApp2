@@ -10,87 +10,97 @@
     tools:context=".RoofCalculator">
 
     <ImageView
-        android:id="@+id/examplevalma"
+        android:id="@+id/examplemansard"
         android:layout_width="212dp"
         android:layout_height="172dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/forvalma" />
+        android:src="@drawable/formansard" />
 
     <EditText
-        android:id="@+id/editTextLength2"
+        android:id="@+id/editTextLength4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/examplevalma"
-        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/examplemansard"
+        android:layout_marginBottom="4dp"
         android:hint="Введите сторону А"
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/editTextWidth2"
+        android:id="@+id/editTextWidth4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Введите сторону B"
         android:inputType="numberDecimal"
-        android:layout_below="@id/editTextLength2"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_below="@id/editTextLength4"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
 
     <EditText
-        android:id="@+id/editTextHeight2"
+        android:id="@+id/editTextHeight4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Введите высоту H"
         android:inputType="numberDecimal"
-        android:layout_below="@id/editTextWidth2"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_below="@id/editTextWidth4"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/editTextC2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите смещение С"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/editTextHeight4"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
 
 
     <EditText
-        android:id="@+id/sves2"
+        android:id="@+id/sves4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Введите длину свеса(по умолчанию 50см)"
         android:inputType="textLongMessage"
-        android:layout_below="@id/editTextHeight2"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_below="@id/editTextC2"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
 
     <EditText
-        android:id="@+id/editTextC"
+        android:id="@+id/editTextD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите смещение С"
+        android:hint="Введите высоту чердака d)"
         android:inputType="textLongMessage"
-        android:layout_below="@id/sves2"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_below="@id/sves4"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
+
 
     <EditText
-        android:id="@+id/editTextName2"
+        android:id="@+id/editTextName4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Имя проекта"
         android:inputType="textLongMessage"
-        android:layout_below="@id/editTextC"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
-
+        android:layout_below="@id/editTextD"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
 
     <Button
-        android:id="@+id/buttonCalculate2"
+        android:id="@+id/buttonCalculate4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Рассчитать"
-        android:layout_below="@id/editTextName2"
-        android:layout_marginTop="16dp"/>
+        android:layout_below="@id/editTextName4"
+        android:layout_marginTop="4dp"/>
 
     <TextView
-        android:id="@+id/textViewResult2"
+        android:id="@+id/textViewResult4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonCalculate2"
-        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonCalculate4"
+        android:layout_marginTop="4dp"
         android:text=""
         android:textSize="18sp"/>
 

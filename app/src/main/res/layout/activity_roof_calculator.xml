@@ -9,23 +9,53 @@
     android:paddingBottom="16dp"
     tools:context=".RoofCalculator">
 
+    <ImageView
+        android:id="@+id/examplescat1"
+        android:layout_width="212dp"
+        android:layout_height="172dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/forscat1" />
+
     <EditText
         android:id="@+id/editTextLength"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Длина крыши (в метрах)"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="8dp"/>
+        android:layout_below="@+id/examplescat1"
+        android:layout_marginBottom="8dp"
+        android:hint="Введите сторону А"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editTextWidth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ширина крыши (в метрах)"
+        android:hint="Введите сторону B"
         android:inputType="numberDecimal"
         android:layout_below="@id/editTextLength"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите высоту H"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/editTextWidth"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+
+    <EditText
+        android:id="@+id/sves1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите длину свеса(по умолчанию 50см)"
+        android:inputType="textLongMessage"
+        android:layout_below="@id/editTextHeight"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
 
     <EditText
         android:id="@+id/editTextName"
@@ -33,7 +63,7 @@
         android:layout_height="wrap_content"
         android:hint="Имя проекта"
         android:inputType="textLongMessage"
-        android:layout_below="@id/editTextWidth"
+        android:layout_below="@id/sves1"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>
 

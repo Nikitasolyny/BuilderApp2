@@ -1,16 +1,22 @@
 package com.example.myapplication;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import java.lang.Math;
+
 
 public class RoofCalculator2 extends AppCompatActivity {
-
+    private DatabaseHelper databaseHelper;
     private EditText lengthEditText2;
     private EditText widthEditText2;
+    private EditText nameEditText2;
+    private EditText CEditText;
+    private EditText heightEditText2;
+    private EditText sves2;
     private Button calculateButton2;
     private TextView resultTextView2;
 
@@ -18,9 +24,13 @@ public class RoofCalculator2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roof_calculator2);
-
+        databaseHelper = new DatabaseHelper(this);
         lengthEditText2 = findViewById(R.id.editTextLength2);
         widthEditText2 = findViewById(R.id.editTextWidth2);
+        nameEditText2 = findViewById(R.id.editTextName2);
+        heightEditText2 = findViewById(R.id.editTextHeight2);
+        sves2 = findViewById(R.id.sves2);
+        CEditText = findViewById(R.id.editTextC);
         calculateButton2 = findViewById(R.id.buttonCalculate2);
         resultTextView2 = findViewById(R.id.textViewResult2);
 
@@ -31,24 +41,39 @@ public class RoofCalculator2 extends AppCompatActivity {
             }
         });
     }
-
+    private void showToast(String message) {
+        Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
+    }
     private void calculateRoofArea() {
         // Получаем значения длины и ширины крыши
         String lengthStr = lengthEditText2.getText().toString();
         String widthStr = widthEditText2.getText().toString();
+        String sves2Str = sves2.getText().toString();
+        String CEditTextStr = CEditText.getText().toString();
+        String heightStr = heightEditText2.getText().toString();
+        String nameStr = nameEditText2.getText().toString();
 
         // Проверяем, не пусты ли введенные значения
-        if (lengthStr.isEmpty() || widthStr.isEmpty()) {
-            resultTextView2.setText("Введите значения для длины и ширины крыши");
+        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves2Str.isEmpty()  || CEditTextStr.isEmpty() || heightStr.isEmpty()) {
+            resultTextView2.setText("Введите все значения");
             return;
         }
 
         // Преобразуем строки в числа
-        double length = Double.parseDouble(lengthStr);
-        double width = Double.parseDouble(widthStr);
+        double a = Double.parseDouble(lengthStr);
+        double b = Double.parseDouble(widthStr);
+        double h = Double.parseDouble(heightStr);
+        double d = Double.parseDouble(sves2Str);
+        double c = Double.parseDouble(CEditTextStr);
+        double area = 2*(((b+2*d)*Math.sqrt(Math.pow(c, 2)+Math.pow(h, 2)))/2 + (2*(a+d-c))/2*Math.sqrt(Math.pow(c, 2)+Math.pow(((a+2d)/2), 2)));
 
-        // Рассчитываем площадь крыши
-        double area = length * width;
+        // Добавление данных в базу данных
+        long newRowId = databaseHelper.insertData(nameStr,b,a);
+        if (newRowId != -1) {
+            showToast("Data added, Row ID: " + newRowId);
+        } else {
+            showToast("Error adding data");
+        }
 
         // Выводим результат
         resultTextView2.setText("Площадь крыши: " + area + " кв. м");
