@@ -92,7 +92,7 @@ public class RoofCalculator extends AppCompatActivity {
 
             long newRowId = databaseHelper.insertData(nameStr, "Односкатная", length, width, height, area, d, 0, 0);
             if (newRowId != -1) {
-                showToast("Проект сохранен, Row ID: " + newRowId);
+                showToast("Проект сохранен, площадь составила: " + area + "метров квадратных");
                 return true;
             } else {
                 showToast("Ошибка при добавлении данных");

@@ -100,7 +100,7 @@ public class RoofCalculator4 extends AppCompatActivity {
 
             long newRowId = databaseHelper.insertData(nameStr, "Мансардная", a, b, h, area, s, c, d);
             if (newRowId != -1) {
-                showToast("Данные добавлены, Row ID: " + newRowId);
+                showToast("Проект сохранен, площадь составила: " + area + "метров квадратных");
                 return true;
             } else {
                 showToast("Ошибка при добавлении данных");
