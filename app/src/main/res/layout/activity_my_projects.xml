@@ -1,32 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnDeleteLast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Last Entry"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btnDeleteAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete All Entries"
-        android:layout_below="@id/btnDeleteLast"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_below="@id/btnDeleteAll"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutButtons"/>
+
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnDeleteLast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Удалить последний проект"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/btnDeleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Удалить все проекты"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
 </RelativeLayout>
-
-

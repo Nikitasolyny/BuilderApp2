@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,8 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Math;
 
-
-
 public class RoofCalculator3 extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private EditText lengthEditText3;
@@ -18,7 +17,6 @@ public class RoofCalculator3 extends AppCompatActivity {
     private EditText nameEditText3;
     private EditText heightEditText3;
     private EditText sves3;
-
     private Button calculateButton3;
     private TextView resultTextView3;
 
@@ -38,40 +36,63 @@ public class RoofCalculator3 extends AppCompatActivity {
         calculateButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculateRoofArea();
-                Intent intent = new Intent(RoofCalculator3.this, MyProjects.class);
-                startActivity(intent);
+                if (calculateRoofArea()) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(RoofCalculator3.this, MyProjects.class);
+                            startActivity(intent);
+                        }
+                    }, 3000);
+                }
             }
         });
     }
+
     private void showToast(String message) {
-        Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Проект сохранен", Toast.LENGTH_SHORT).show();
     }
-    private void calculateRoofArea() {
+
+    private boolean calculateRoofArea() {
         String lengthStr = lengthEditText3.getText().toString();
         String widthStr = widthEditText3.getText().toString();
         String sves3Str = sves3.getText().toString();
         String heightStr = heightEditText3.getText().toString();
         String nameStr = nameEditText3.getText().toString();
 
-        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves3Str.isEmpty()  || heightStr.isEmpty()) {
+        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves3Str.isEmpty() || heightStr.isEmpty()) {
             resultTextView3.setText("Введите все значения");
-            return;
+            showToast("Введите все значения");
+            return false;
         }
 
-        double a = Double.parseDouble(lengthStr);
-        double b = Double.parseDouble(widthStr);
-        double h = Double.parseDouble(heightStr);
-        double d = Double.parseDouble(sves3Str);
-        double area = 2*((a+2*d)*(Math.sqrt(Math.pow(h,2)+Math.pow((b+2*d)/2,2))));
+        try {
+            double a = Double.parseDouble(lengthStr);
+            double b = Double.parseDouble(widthStr);
+            double h = Double.parseDouble(heightStr);
+            double d = Double.parseDouble(sves3Str);
 
-        long newRowId = databaseHelper.insertData(nameStr,"Двухскатная",a,b,h,area,d,0,0);
-        if (newRowId != -1) {
-            showToast("Data added, Row ID: " + newRowId);
-        } else {
-            showToast("Error adding data");
+            if (a <= 0 || b <= 0 || h <= 0 || d < 0) {
+                resultTextView3.setText("Введите корректные значения");
+                showToast("Введите корректные значения");
+                return false;
+            }
+
+            double area = 2 * ((a + 2 * d) * (Math.sqrt(Math.pow(h, 2) + Math.pow((b + 2 * d) / 2, 2))));
+
+            long newRowId = databaseHelper.insertData(nameStr, "Двухскатная", a, b, h, area, d, 0, 0);
+            if (newRowId != -1) {
+                showToast("Данные добавлены, Row ID: " + newRowId);
+                return true;
+            } else {
+                showToast("Ошибка при добавлении данных");
+                return false;
+            }
+
+        } catch (NumberFormatException e) {
+            resultTextView3.setText("Введите корректные числовые значения");
+            showToast("Введите корректные числовые значения");
+            return false;
         }
-
-        resultTextView3.setText("Площадь крыши: " + area + " кв. м");
     }
 }

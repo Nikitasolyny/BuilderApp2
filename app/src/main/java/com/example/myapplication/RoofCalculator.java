@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,8 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Math;
 
-
-
 public class RoofCalculator extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private EditText lengthEditText;
@@ -18,7 +17,6 @@ public class RoofCalculator extends AppCompatActivity {
     private EditText nameEditText;
     private EditText heightEditText;
     private EditText sves1;
-
     private Button calculateButton;
     private TextView resultTextView;
 
@@ -38,41 +36,64 @@ public class RoofCalculator extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculateRoofArea();
-                Intent intent = new Intent(RoofCalculator.this, MyProjects.class);
-                startActivity(intent);
+                if (calculateRoofArea()) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(RoofCalculator.this, MyProjects.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 3000);
+                }
             }
         });
     }
+
     private void showToast(String message) {
-        Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-    private void calculateRoofArea() {
+
+    private boolean calculateRoofArea() {
         String lengthStr = lengthEditText.getText().toString();
         String widthStr = widthEditText.getText().toString();
         String sves1Str = sves1.getText().toString();
         String heightStr = heightEditText.getText().toString();
         String nameStr = nameEditText.getText().toString();
 
-        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves1Str.isEmpty()  || heightStr.isEmpty()) {
+        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves1Str.isEmpty() || heightStr.isEmpty()) {
             resultTextView.setText("Введите все значения");
-            return;
+            showToast("Введите все значения");
+            return false;
         }
 
-        double length = Double.parseDouble(lengthStr);
-        double width = Double.parseDouble(widthStr);
-        double height = Double.parseDouble(heightStr);
-        double d = Double.parseDouble(sves1Str);
-        double area = (Math.sqrt(Math.pow(height, 2) + Math.pow(length, 2)) + 2 *d) * (width + 2 * d);
+        try {
+            double length = Double.parseDouble(lengthStr);
+            double width = Double.parseDouble(widthStr);
+            double height = Double.parseDouble(heightStr);
+            double d = Double.parseDouble(sves1Str);
 
-        long newRowId = databaseHelper.insertData(nameStr,"Односкатная",length, width, height, area, d, 0, 0);
-        if (newRowId != -1) {
-            showToast("Data added, Row ID: " + newRowId);
-        } else {
-            showToast("Error adding data");
+            if (length <= 0 || width <= 0 || height <= 0 || d < 0) {
+                resultTextView.setText("Введите корректные значения");
+                showToast("Введите корректные значения");
+                return false;
+            }
+
+            double area = (length + 2 * d) * Math.sqrt(Math.pow(height, 2) + Math.pow(width + 2 * d, 2));
+
+            long newRowId = databaseHelper.insertData(nameStr, "Односкатная", length, width, height, area, d, 0, 0);
+            if (newRowId != -1) {
+                showToast("Проект сохранен, Row ID: " + newRowId);
+                return true;
+            } else {
+                showToast("Ошибка при добавлении данных");
+                return false;
+            }
+
+        } catch (NumberFormatException e) {
+            resultTextView.setText("Введите корректные числовые значения");
+            showToast("Введите корректные числовые значения");
+            return false;
         }
-
-        // Выводим результат
-        resultTextView.setText("Площадь крыши: " + area + " кв. м");
     }
 }

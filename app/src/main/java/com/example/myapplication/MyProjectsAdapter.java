@@ -29,16 +29,15 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Project project = projects.get(position);
-        holder.nameTextView.setText("Name: " + project.getName());
-        holder.widthTextView.setText("Width: " + project.getWidth());
-        holder.lengthTextView.setText("Length: " + project.getLength());
-        holder.squareTextView.setText("Square: " + project.getSquare());
-
-        holder.typeTextView.setText("Type: " + project.getType());
-        holder.heightTextView.setText("Height: " + project.getHeight());
-        holder.dTextView.setText("D: " + project.getD());
-        holder.cTextView.setText("C: " + project.getC());
-        holder.sTextView.setText("S: " + project.getS());
+        holder.nameTextView.setText("Имя проекта: " + project.getName());
+        holder.widthTextView.setText("Ширина стены B: " + project.getWidth());
+        holder.lengthTextView.setText("Длина стены А: " + project.getLength());
+        holder.squareTextView.setText("Площадь крыши: " + project.getSquare());
+        holder.typeTextView.setText("Рассчитываемый тип крыши: " + project.getType());
+        holder.heightTextView.setText("Высота стены H: " + project.getHeight());
+        holder.dTextView.setText("Длина свеса D: " + project.getD());
+        holder.cTextView.setText("Смещение C: " + project.getC());
+        holder.sTextView.setText("Высота чердака d: " + project.getS());
         Log.d("MyProjectsAdapter", "Binding project at position " + position);
     }
     @Override

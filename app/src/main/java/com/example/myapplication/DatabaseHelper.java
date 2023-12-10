@@ -96,7 +96,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
-            // Добавляем новые столбцы
             String updateQuery = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_TYPE + " TEXT;";
             db.execSQL(updateQuery);
 
@@ -112,7 +111,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             updateQuery = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_S + " REAL;";
             db.execSQL(updateQuery);
         }
-        // Добавьте дополнительные условия обновления для новых версий базы данных, если необходимо
     }
 
 
@@ -154,7 +152,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int deleteLastData() {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // Получаем ID последней записи
         String selectQuery = "SELECT MAX(" + COLUMN_ID + ") FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
         long lastEntryId = -1;
@@ -173,7 +170,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return db.delete(TABLE_NAME, selection, selectionArgs);
         }
 
-        return 0; // Если не удалось определить последнюю запись или база данных пуста
+        return 0;
     }
 
     public int deleteAllData() {

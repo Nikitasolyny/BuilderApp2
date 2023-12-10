@@ -20,24 +20,18 @@ public class MyProjects extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        // Получаем данные из базы данных
         List<Project> projects = dbHelper.getAllProjects();
 
-        // Находим RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        // Создаем и устанавливаем адаптер
         adapter = new MyProjectsAdapter(projects);
         recyclerView.setAdapter(adapter);
 
-        // Устанавливаем менеджер компоновки
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Находим кнопки
         Button deleteLastButton = findViewById(R.id.btnDeleteLast);
         Button deleteAllButton = findViewById(R.id.btnDeleteAll);
 
-        // Устанавливаем обработчики для кнопок
         deleteLastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

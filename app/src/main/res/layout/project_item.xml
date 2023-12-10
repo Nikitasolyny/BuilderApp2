@@ -9,25 +9,25 @@
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name: " />
+        android:text="Имя проекта: " />
 
     <TextView
         android:id="@+id/widthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Width: " />
+        android:text="Ширина стены B: " />
 
     <TextView
         android:id="@+id/lengthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Length: " />
+        android:text="Длина стены А: " />
 
     <TextView
         android:id="@+id/squareTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Square: " />
+        android:text="Площадь крыши: " />
 
     <TextView
         android:id="@+id/typeTextView"
@@ -39,24 +39,24 @@
         android:id="@+id/heightTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Height: " />
+        android:text="Высота стены H: " />
 
     <TextView
         android:id="@+id/dTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="D: " />
+        android:text="Длина свеса D: " />
 
     <TextView
         android:id="@+id/cTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="C: " />
+        android:text="Смещение C: " />
 
     <TextView
         android:id="@+id/sTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="S: " />
+        android:text="Высота чердака d: " />
 
 </LinearLayout>

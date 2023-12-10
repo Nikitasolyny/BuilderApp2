@@ -47,19 +47,12 @@
         android:layout_below="@id/descriptiontext1"
         android:layout_marginTop="20sp"
         android:text="@string/decriptionRoof" />
-    <TextView
-        android:id="@+id/descriptionStrapila"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionRoof"
-        android:layout_marginTop="20sp"
-        android:text="@string/decriptionStrapila" />
 
     <TextView
         android:id="@+id/descriptionMaterial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionStrapila"
+        android:layout_below="@id/descriptionRoof"
         android:layout_marginTop="20dp"
         android:text="@string/decriptionMaterial" />
 
@@ -76,14 +69,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="Перейти к калькулятору крыши" />
+            android:text="Калькулятор крыши" />
 
         <Button
             android:id="@+id/buttonGoToRoofGuide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="Перейти к справочнику" />
+            android:text="Справочник" />
 
     </LinearLayout>
     <LinearLayout

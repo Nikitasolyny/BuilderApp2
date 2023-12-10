@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,8 +9,6 @@ import android.widget.Toast;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Math;
-
-
 
 public class RoofCalculator4 extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
@@ -20,7 +19,6 @@ public class RoofCalculator4 extends AppCompatActivity {
     private EditText DEditText;
     private EditText CEditText2;
     private EditText sves4;
-
     private Button calculateButton4;
     private TextView resultTextView4;
 
@@ -42,16 +40,24 @@ public class RoofCalculator4 extends AppCompatActivity {
         calculateButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculateRoofArea();
-                Intent intent = new Intent(RoofCalculator4.this, MyProjects.class);
-                startActivity(intent);
+                if (calculateRoofArea()) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(RoofCalculator4.this, MyProjects.class);
+                            startActivity(intent);
+                        }
+                    }, 3000);
+                }
             }
         });
     }
+
     private void showToast(String message) {
-        Toast.makeText(this, "Проект сохранен" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Проект сохранен", Toast.LENGTH_SHORT).show();
     }
-    private void calculateRoofArea() {
+
+    private boolean calculateRoofArea() {
         String lengthStr = lengthEditText4.getText().toString();
         String widthStr = widthEditText4.getText().toString();
         String sves4Str = sves4.getText().toString();
@@ -60,28 +66,41 @@ public class RoofCalculator4 extends AppCompatActivity {
         String heightStr = heightEditText4.getText().toString();
         String nameStr = nameEditText4.getText().toString();
 
-        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves4Str.isEmpty()  || DEditTextStr.isEmpty() || CEditText2Str.isEmpty() || heightStr.isEmpty()) {
+        if (lengthStr.isEmpty() || widthStr.isEmpty() || nameStr.isEmpty() || sves4Str.isEmpty() || DEditTextStr.isEmpty() || CEditText2Str.isEmpty() || heightStr.isEmpty()) {
             resultTextView4.setText("Введите все значения");
-            return;
-        }
-        double a = Double.parseDouble(lengthStr);
-        double b = Double.parseDouble(widthStr);
-        double h = Double.parseDouble(heightStr);
-        double s = Double.parseDouble(sves4Str);
-        double c = Double.parseDouble(CEditText2Str);
-        double d = Double.parseDouble(DEditTextStr);
-        double area = 2*((a+2*s)*(Math.sqrt(Math.pow(h,2)+Math.pow(c,2)) + (a+2*s) * Math.sqrt(Math.pow((b+2*s)/2-c,2)+Math.pow(d,2))));
-
-        // такой порядок String name, String type, double length, double width, double height,
-        //                           double square, double d, double c, double s
-        long newRowId = databaseHelper.insertData(nameStr,"Мансардная",a,b,h,area,s,c,d);
-        if (newRowId != -1) {
-            showToast("Data added, Row ID: " + newRowId);
-        } else {
-            showToast("Error adding data");
+            showToast("Введите все значения");
+            return false;
         }
 
-        // Выводим результат
-        resultTextView4.setText("Площадь крыши: " + area + " кв. м");
+        try {
+            double a = Double.parseDouble(lengthStr);
+            double b = Double.parseDouble(widthStr);
+            double h = Double.parseDouble(heightStr);
+            double s = Double.parseDouble(sves4Str);
+            double c = Double.parseDouble(CEditText2Str);
+            double d = Double.parseDouble(DEditTextStr);
+
+            if (a <= 0 || b <= 0 || h <= 0 || s < 0 || c <= 0 || d <= 0) {
+                resultTextView4.setText("Введите корректные значения");
+                showToast("Введите корректные значения");
+                return false;
+            }
+
+            double area = 2 * ((a + 2 * s) * (Math.sqrt(Math.pow(h, 2) + Math.pow(c, 2)) + (a + 2 * s) * Math.sqrt(Math.pow((b + 2 * s) / 2 - c, 2) + Math.pow(d, 2))));
+
+            long newRowId = databaseHelper.insertData(nameStr, "Мансардная", a, b, h, area, s, c, d);
+            if (newRowId != -1) {
+                showToast("Данные добавлены, Row ID: " + newRowId);
+                return true;
+            } else {
+                showToast("Ошибка при добавлении данных");
+                return false;
+            }
+
+        } catch (NumberFormatException e) {
+            resultTextView4.setText("Введите корректные числовые значения");
+            showToast("Введите корректные числовые значения");
+            return false;
+        }
     }
 }

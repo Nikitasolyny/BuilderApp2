@@ -15,14 +15,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="фр1" />
+            android:text="Типы крыш" />
 
         <Button
             android:id="@+id/buttonFragment2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="фр2" />
+            android:text="Используемые материалы" />
 
     </LinearLayout>
 
