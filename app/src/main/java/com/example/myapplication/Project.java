@@ -11,6 +11,7 @@ public class Project {
     private double d;
     private double c;
     private double s;
+    private double materialCalculation;
 
     public Project(String name, String type, double length, double width, double height, double square, double d, double c, double s) {
         this.name = name;
@@ -22,8 +23,13 @@ public class Project {
         this.d = d;
         this.c = c;
         this.s = s;
+        this.materialCalculation = calculateMaterialCalculation();
     }
 
+    private double calculateMaterialCalculation() {
+        materialCalculation = Math.ceil((square/1.5)*100)/100;
+        return materialCalculation;
+    }
     public String getName() {
         return name;
     }
@@ -58,5 +64,8 @@ public class Project {
 
     public double getS() {
         return s;
+    }
+    public double getMaterialCalculation() {
+        return materialCalculation;
     }
 }

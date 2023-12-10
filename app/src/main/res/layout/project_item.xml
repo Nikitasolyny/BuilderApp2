@@ -36,6 +36,11 @@ android:padding="16dp">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Площадь крыши: " />
+<TextView
+    android:id="@+id/quantityTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Количество листов материала: " />
 
 <TextView
     android:id="@+id/typeTextView"

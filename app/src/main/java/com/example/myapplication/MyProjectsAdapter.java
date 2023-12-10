@@ -33,6 +33,7 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
         holder.widthTextView.setText("Ширина стены B: " + project.getWidth());
         holder.lengthTextView.setText("Длина стены А: " + project.getLength());
         holder.squareTextView.setText("Площадь крыши: " + project.getSquare());
+        holder.quantityTextView.setText("Количество листов материала: " + project.getMaterialCalculation());
         holder.typeTextView.setText("Рассчитываемый тип крыши: " + project.getType());
         holder.heightTextView.setText("Высота стены H: " + project.getHeight());
         holder.dTextView.setText("Длина свеса D: " + project.getD());
@@ -58,6 +59,7 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
         TextView squareTextView;
         TextView typeTextView;
         TextView heightTextView;
+        TextView quantityTextView;
         TextView dTextView;
         TextView cTextView;
         TextView sTextView;
@@ -70,6 +72,7 @@ public class MyProjectsAdapter extends RecyclerView.Adapter<MyProjectsAdapter.Vi
             squareTextView = itemView.findViewById(R.id.squareTextView);
             typeTextView = itemView.findViewById(R.id.typeTextView);
             heightTextView = itemView.findViewById(R.id.heightTextView);
+            quantityTextView = itemView.findViewById(R.id.quantityTextView);
             dTextView = itemView.findViewById(R.id.dTextView);
             cTextView = itemView.findViewById(R.id.cTextView);
             sTextView = itemView.findViewById(R.id.sTextView);

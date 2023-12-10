@@ -17,11 +17,9 @@ public class RoofGuide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roof_guide);
 
-        // Находим кнопки по идентификаторам
         Button buttonFragment1 = findViewById(R.id.buttonFragment1);
         Button buttonFragment2 = findViewById(R.id.buttonFragment2);
 
-        // Устанавливаем обработчики нажатия для кнопок
         buttonFragment1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
