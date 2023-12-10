@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ChooseFunction extends AppCompatActivity {
 
@@ -17,6 +19,10 @@ public class ChooseFunction extends AppCompatActivity {
         ImageButton valma = findViewById(R.id.valma);
         ImageButton scat2 = findViewById(R.id.scat2);
         ImageButton mansard = findViewById(R.id.mansard);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         scat1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,5 +53,14 @@ public class ChooseFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,13 +1,17 @@
 package com.example.myapplication;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.lang.Math;
 
 public class RoofCalculator3 extends AppCompatActivity {
@@ -42,15 +46,21 @@ public class RoofCalculator3 extends AppCompatActivity {
                         public void run() {
                             Intent intent = new Intent(RoofCalculator3.this, MyProjects.class);
                             startActivity(intent);
+                            finish();
                         }
                     }, 3000);
                 }
             }
         });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private void showToast(String message) {
-        Toast.makeText(this, "Проект сохранен", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private boolean calculateRoofArea() {
@@ -78,7 +88,7 @@ public class RoofCalculator3 extends AppCompatActivity {
                 return false;
             }
 
-            double area = 2 * ((a + 2 * d) * (Math.sqrt(Math.pow(h, 2) + Math.pow((b + 2 * d) / 2, 2))));
+            double area = Math.ceil((2 * ((a + 2 * d) * (Math.sqrt(Math.pow(h, 2) + Math.pow((b + 2 * d) / 2, 2)))))*100)/100;
 
             long newRowId = databaseHelper.insertData(nameStr, "Двухскатная", a, b, h, area, d, 0, 0);
             if (newRowId != -1) {
@@ -94,5 +104,14 @@ public class RoofCalculator3 extends AppCompatActivity {
             showToast("Введите корректные числовые значения");
             return false;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

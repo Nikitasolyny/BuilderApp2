@@ -1,13 +1,17 @@
 package com.example.myapplication;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.lang.Math;
 
 public class RoofCalculator extends AppCompatActivity {
@@ -48,6 +52,11 @@ public class RoofCalculator extends AppCompatActivity {
                 }
             }
         });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private void showToast(String message) {
@@ -79,7 +88,7 @@ public class RoofCalculator extends AppCompatActivity {
                 return false;
             }
 
-            double area = (length + 2 * d) * Math.sqrt(Math.pow(height, 2) + Math.pow(width + 2 * d, 2));
+            double area = Math.ceil((length + 2 * d) * Math.sqrt(Math.pow(height, 2) + Math.pow(width + 2 * d, 2)) * 100.0) / 100.0;
 
             long newRowId = databaseHelper.insertData(nameStr, "Односкатная", length, width, height, area, d, 0, 0);
             if (newRowId != -1) {
@@ -95,5 +104,14 @@ public class RoofCalculator extends AppCompatActivity {
             showToast("Введите корректные числовые значения");
             return false;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

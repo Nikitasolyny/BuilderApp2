@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/crem"
+    app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Имя проекта: " />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="16dp">
 
-    <TextView
-        android:id="@+id/widthTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ширина стены B: " />
+<TextView
+    android:id="@+id/nameTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Имя проекта: " />
 
-    <TextView
-        android:id="@+id/lengthTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Длина стены А: " />
+<TextView
+    android:id="@+id/widthTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Ширина стены B: " />
 
-    <TextView
-        android:id="@+id/squareTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Площадь крыши: " />
+<TextView
+    android:id="@+id/lengthTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Длина стены А: " />
 
-    <TextView
-        android:id="@+id/typeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Рассчитываемый тип крыши: " />
+<TextView
+    android:id="@+id/squareTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Площадь крыши: " />
 
-    <TextView
-        android:id="@+id/heightTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Высота стены H: " />
+<TextView
+    android:id="@+id/typeTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Рассчитываемый тип крыши: " />
 
-    <TextView
-        android:id="@+id/dTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Длина свеса D: " />
+<TextView
+    android:id="@+id/heightTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Высота стены H: " />
 
-    <TextView
-        android:id="@+id/cTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Смещение C: " />
+<TextView
+    android:id="@+id/dTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Длина свеса D: " />
 
-    <TextView
-        android:id="@+id/sTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Высота чердака d: " />
+<TextView
+    android:id="@+id/cTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Смещение C: " />
+
+<TextView
+    android:id="@+id/sTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Высота чердака d: " />
 
 </LinearLayout>
+    </androidx.cardview.widget.CardView>

@@ -9,10 +9,13 @@
     android:paddingBottom="16dp"
     tools:context=".RoofCalculator">
 
+    <include layout="@layout/toolbar" />
+
     <ImageView
         android:id="@+id/examplescat2"
         android:layout_width="212dp"
         android:layout_height="172dp"
+        android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
         android:src="@drawable/forscat2" />
 

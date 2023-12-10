@@ -9,10 +9,13 @@
     android:paddingBottom="16dp"
     tools:context=".RoofCalculator">
 
+    <include layout="@layout/toolbar" />
+
     <ImageView
         android:id="@+id/examplemansard"
         android:layout_width="212dp"
         android:layout_height="172dp"
+        android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
         android:src="@drawable/formansard" />
 
@@ -21,7 +24,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/examplemansard"
-        android:layout_marginBottom="4dp"
         android:hint="Введите сторону А (в метрах)"
         android:inputType="numberDecimal" />
 
@@ -31,9 +33,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите сторону B (в метрах)"
         android:inputType="numberDecimal"
-        android:layout_below="@id/editTextLength4"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/editTextLength4" />
 
     <EditText
         android:id="@+id/editTextHeight4"
@@ -41,9 +41,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите высоту H (в метрах)"
         android:inputType="numberDecimal"
-        android:layout_below="@id/editTextWidth4"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/editTextWidth4" />
 
     <EditText
         android:id="@+id/editTextC2"
@@ -51,9 +49,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите смещение С (в метрах)"
         android:inputType="numberDecimal"
-        android:layout_below="@id/editTextHeight4"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/editTextHeight4" />
 
 
     <EditText
@@ -62,9 +58,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите длину свеса(по умолчанию 0.5м)"
         android:inputType="textLongMessage"
-        android:layout_below="@id/editTextC2"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/editTextC2" />
 
     <EditText
         android:id="@+id/editTextD"
@@ -72,9 +66,7 @@
         android:layout_height="wrap_content"
         android:hint="Введите высоту чердака d (в метрах)"
         android:inputType="textLongMessage"
-        android:layout_below="@id/sves4"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/sves4" />
 
 
     <EditText
@@ -83,24 +75,20 @@
         android:layout_height="wrap_content"
         android:hint="Имя проекта"
         android:inputType="textLongMessage"
-        android:layout_below="@id/editTextD"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        android:layout_below="@id/editTextD" />
 
     <Button
         android:id="@+id/buttonCalculate4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Рассчитать"
-        android:layout_below="@id/editTextName4"
-        android:layout_marginTop="4dp"/>
+        android:layout_below="@id/editTextName4" />
 
     <TextView
         android:id="@+id/textViewResult4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonCalculate4"
-        android:layout_marginTop="4dp"
         android:text=""
         android:textSize="18sp"/>
 
